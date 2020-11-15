@@ -20,10 +20,13 @@ app.use(bodyParser.json());
 var token = process.env.TOKEN || 'token';
 var received_updates = [];
 
+var status;
+var track = 0
+
 app.get('/', function(req, res) {
   console.log(req);
   // res.send('<pre>' + JSON.stringify(received_updates, null, 2) + '</pre>');
-  res.send('hey yeet')
+  res.send(status);
 });
 
 app.get(['/facebook', '/instagram'], function(req, res) {
@@ -57,6 +60,9 @@ app.post('/instagram', function(req, res) {
   console.log(req.body);
   // Process the Instagram updates here
   received_updates.unshift(req.body);
+  status = 'I received an instagram update. N.' + track;
+  track++;
+
   res.sendStatus(200);
 });
 
