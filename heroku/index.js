@@ -23,6 +23,7 @@ var received_updates = [];
 app.get('/', function(req, res) {
   console.log(req);
   res.send('<pre>' + JSON.stringify(received_updates, null, 2) + '</pre>');
+  res.send('hey yeet')
 });
 
 app.get(['/facebook', '/instagram'], function(req, res) {
@@ -30,8 +31,7 @@ app.get(['/facebook', '/instagram'], function(req, res) {
     req.query['hub.mode'] == 'subscribe' &&
     req.query['hub.verify_token'] == token
   ) {
-    // res.send(req.query['hub.challenge']);
-    res.send('YEET');
+    res.send(req.query['hub.challenge']);
   } else {
     res.sendStatus(400);
   }
