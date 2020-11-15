@@ -60,6 +60,11 @@ app.post('/instagram', function(req, res) {
   // Process the Instagram updates here
   received_updates.unshift(req.body);
   comment_id = received_updates[0].entry[0].changes[0].value.comment_id;
+  if(typeof comment_id !== 'undefined') {
+    status('We got a comment_id baby!');
+  }
+
+
   status = comment_id;
 
   res.sendStatus(200);
