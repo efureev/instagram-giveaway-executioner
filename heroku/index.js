@@ -63,10 +63,6 @@ app.post('/instagram', function(req, res) {
   if(typeof comment_id !== 'undefined') {
     status =  'We got a comment_id baby!';
   }
-
-
-  status = comment_id;
-
   res.sendStatus(200);
 });
 
