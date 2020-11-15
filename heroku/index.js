@@ -58,7 +58,7 @@ app.post('/instagram', function(req, res) {
   console.log(req.body);
   // Process the Instagram updates here
   received_updates.unshift(req.body);
-  status = '<pre>' + JSON.stringify(received_updates[0].entry[0].changes[0].value.comment_id, null, 2) + '</pre>';
+  comment_id = received_updates[0].entry[0].changes[0].value.comment_id;
 
   res.sendStatus(200);
 });
