@@ -19,6 +19,7 @@ app.use(bodyParser.json());
 
 var token = process.env.TOKEN || 'token';
 var received_updates = [];
+var comment_id;
 
 var status = 'This place seems quiet.'
 
@@ -59,6 +60,7 @@ app.post('/instagram', function(req, res) {
   // Process the Instagram updates here
   received_updates.unshift(req.body);
   comment_id = received_updates[0].entry[0].changes[0].value.comment_id;
+  status = comment_id;
 
   res.sendStatus(200);
 });
